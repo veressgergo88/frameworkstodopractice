@@ -1,4 +1,10 @@
 import { useState } from "react"
+import { type Todo } from "../App"
+
+type Props = {
+    todo: Todo 
+
+}
 
 function Todo() {
     const [isBeingEdited, setIsBeingEdited] = useState(false)

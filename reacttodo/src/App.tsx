@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
 import Header from './components/Header'
-import Todo from './components/Todo'
+import TodoRender from './components/TodoRender'
+
+export type Todo = {
+    id: number
+    title: string
+    description: string
+    isCompleted: boolean
+}
 
 function App(){
-    type Todo = {
-        id: number
-        title: string
-        description: string
-        isCompleted: boolean
-    }
 
     const [titleInput, setTitleInput] = useState("")
     const [descInput, setDescInput] = useState("")
@@ -45,7 +46,7 @@ function App(){
 
     return(
         <main className="max-w-[800px] m-auto min-h-screen bg-gray-400">
-            <Header />
+            <Header title="My todo app"/>
 
             <div>
                 <input className="p-2" placeholder='Title' type="text" value={titleInput} onChange={(e) => setTitleInput(e.target.value)}/>
@@ -59,9 +60,14 @@ function App(){
         
             <hr className="my-4"/>
 
-            <Header />
+            <Header title="Todos"/>
 
-            
+            <div  className="flex flex-wrap gap-4 m-4">
+                {todos.map(todo => 
+                <TodoRender 
+                
+                />)}
+            </div>
 
         </main>
     )
