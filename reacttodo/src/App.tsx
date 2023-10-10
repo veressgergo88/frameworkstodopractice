@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Header from './components/Header'
-import TodoRender from './components/TodoRender'
+import { TodoRender } from './components/TodoRender'
 
 export type Todo = {
     id: number
@@ -48,7 +48,7 @@ function App(){
         <main className="max-w-[800px] m-auto min-h-screen bg-gray-400">
             <Header title="My todo app"/>
 
-            <div>
+            <div className="border-2 rounded-md p-4 border-gray-800 flex flex-col items-center gap-4 max-w-[400px] m-auto">
                 <input className="p-2" placeholder='Title' type="text" value={titleInput} onChange={(e) => setTitleInput(e.target.value)}/>
                 <input className="p-2" placeholder='Description' type="text" value={descInput} onChange={(e) => setDescInput(e.target.value)}/>
                 <button className="rounded-md border-2 bg-gray-900 text-white p-2" onClick={addTodo}>Add todo</button>
@@ -65,7 +65,9 @@ function App(){
             <div  className="flex flex-wrap gap-4 m-4">
                 {todos.map(todo => 
                 <TodoRender 
-                
+                    todo={todo}
+                    onDelete={ () => deleteOne(todo.id) }
+                    onUpdate={ updateTodo(todo.id) } 
                 />)}
             </div>
 

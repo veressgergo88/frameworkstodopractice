@@ -2,12 +2,12 @@ type Title = {
     title: string
 }
 
-function Header({title}:Title) {
+function Header(headerProps:Title) {
     
     return (
         <div className="flex justify-center p-4">
             <h1 className="text-white text-3xl">
-                {title}
+                {headerProps.title}
             </h1>
         </div>
     )
